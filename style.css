@@ -1,0 +1,170 @@
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+ body {
+    height: 100vh; 
+    display: flex;
+    background-image: url(img/pexels-lukas-628236.jpg);
+    background-size: cover; 
+}
+
+#memory-game{
+    width: 960px;
+    height: 960px;
+    margin: auto;
+    display: flex;  
+    flex-wrap: wrap;
+    perspective: 1000px;
+
+}
+
+
+.memory-card{
+    width: calc(16.66% - 10px);
+    height: calc(16.66% - 10px);
+    margin: 5px;               
+    position: relative;                                        
+    box-shadow: 3px 3px 3px rgba(0,0,0,.3);  
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;                                                                      
+}
+
+
+ .front-face, .back-face{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+    transition: opacity 1s;
+  }
+
+.memory-card:active {
+    transform: scale(0.97);
+    transition: transform 200ms;
+}  
+
+.memory-card.flip {
+    /*Für Flip Animation*/
+    transform: rotateY(180deg);
+}
+
+
+#heading {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    color:rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px rgba(0,0,0,.3);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 5em;
+    font-weight: bold;
+    padding-top:0px;
+
+}
+
+#flips {
+    position: fixed;
+    top: 90px;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    color:rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px rgba(0,0,0,.3);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    padding-top:25px;
+}
+
+#pairs {
+    position: fixed;
+    top: 90px;
+    left: 550px;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    color:rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px rgba(0,0,0,.3);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    padding-top:25px;
+}
+
+#size {
+    position: fixed;
+    top: 90px;
+    left: -250px;
+    right: 0px;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    color:rgb(255, 255, 255);
+    text-shadow: 3px 3px 3px rgba(0,0,0,.3);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    padding-top:25px;
+}
+
+#size4, #size6, #size10{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#size4:hover, #size6:hover, #size10:hover{
+    color: rgba(0,0,0,1);
+}
+
+.overlay-text{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+
+.overlay-text.visible {
+    display: flex;
+    /*Für Text Animation*/
+    animation: overlay-grow 500ms forwards;
+}
+
+@keyframes overlay-grow {
+    from {
+        background-color: rbga(0,0,0,0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.8);
+        font-size: 10em;
+    }
+}
+
